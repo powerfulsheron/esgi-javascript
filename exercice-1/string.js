@@ -49,10 +49,39 @@ function leet(chaine){
     return chaine;
 }
 String.prototype.replaceAt=function(index, replacement) {
-    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+    if(replacement=="(_)"){
+        return this.substr(0, index) + replacement+ this.substr(index);
+    }else{
+        return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+    }
 }
-console.log(leet("anaconda"));
+console.log(leet("bonjour ceci est un test avec un ultima y a l'eau"));
 
 function prop_access(){
-    
+
 }
+
+function verlan(chaine){
+    chaine = chaine.split(" ");
+    for (var i = 0, x = chaine.length; i < x; i++) {
+        chaine[i] = reverse(chaine[i]);
+        console.log(reverse(chaine[i]));
+    }
+    return chaine.join(" ");
+ }
+
+ function reverse(chaine) {
+    var newChaine = "";
+    for (var i = chaine.length - 1; i >= 0; i--) {
+        newChaine += chaine[i];
+    }
+    return newChaine;
+}
+console.log(verlan("Hello world"));
+
+function yoda(chaine){
+    if (typeof chaine === "string") {
+       return chaine.split(" ").reverse().join(" ")
+    }
+ }
+ console.log(yoda("salut les amiches aux saucisson"));
