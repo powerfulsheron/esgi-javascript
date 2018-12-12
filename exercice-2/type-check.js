@@ -23,7 +23,42 @@ function type_check_v2(valeur,objectType){
         }
     }
 }
-console.log(type_check_v2(3,{enum:["foo","bar",3]}));
-console.log(type_check_v2({prop1:1},{type:"object"}));
-console.log(type_check_v2("foo",{type:"string",value:"foo"}));
-console.log(type_check_v2("bar",{type:"string",value:"foo"}));
+
+function type_check(valeur,type){
+    if(type.hasOwnProperty('properties')){
+      Object.entries(type.properties).forEach(entry => {
+                  console.log(entry);
+        if(entry[1].hasOwnProperty('type') && entry[1].type=="object"){
+          return type_check(valeur,entry[1]);
+        }else{
+          //console.log(valeur);
+          //console.log(entry);
+          return type_check_v2(valeur,entry);
+        }
+      });
+      return true;
+    }
+    return type_check_v2(valeur,type)
+}
+
+var test =
+{
+  properties:{
+    prop1:{type:"number"},
+    prop2:{type:"string",enum:["val1","val2"]},
+    prop3:{type:"object",properties:{prop31:"number"}},
+    prop4:{type:"array",properties:["boolean"]}
+  }
+}
+
+const type_check = (val, check) => {
+    if (check.hasOwnProperty('properties')) {
+        return Object.entries(check.properties)
+            .filter(([prop, propCheck]) => type_check(val[prop], propCheck))
+            .length === Object.values(check.properties).length
+        ;
+    }
+    return type_check_v2(val, check);
+};
+
+console.log(type_check("dsqdsqdsqdsq",test));
