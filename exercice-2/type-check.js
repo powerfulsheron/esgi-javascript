@@ -9,10 +9,7 @@ function type_check_v1(valeur,type){
 function type_check_v2(valeur,objectType){
     if(objectType.hasOwnProperty('type')){
         if(objectType.hasOwnProperty('value')){
-            if(objectType.value==valeur){
-                return true;
-            }
-            return false;
+            return objectType.value==valeur;
         }else if(type_check_v1(valeur,objectType)){
             return true;
         }
