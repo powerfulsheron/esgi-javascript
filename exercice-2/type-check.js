@@ -48,7 +48,7 @@ var test =
   }
 }
 
-const type_check = (val, check) => {
+/* const type_check = (val, check) => {
     if (check.hasOwnProperty('properties')) {
         return Object.entries(check.properties)
             .filter(([prop, propCheck]) => type_check(val[prop], propCheck))
@@ -56,6 +56,6 @@ const type_check = (val, check) => {
         ;
     }
     return type_check_v2(val, check);
-};
+}; */
 
 console.log(type_check("dsqdsqdsqdsq",test));
