@@ -1,4 +1,5 @@
 class Pilote {
+
     constructor(nom) {
         this.nom = nom;
         var etat = "normal";
@@ -34,6 +35,34 @@ class Pilote {
   }
 
 class Vehicule {
+    constructor(conf) {
+        this.pilote = conf.pilote;
+        this.num = conf.num;
+        var arme;
+        var distance;
+        var ride = function(){
+
+        }
+        var getWeapon = function(){
+
+        }
+        var fireWeapon = function(){
+
+        }
+        var touch = function(emitter){
+
+        }
+    }
+
+    receiveData(data){
+
+    }
+    needUpdate(){
+
+    }
+    display(){
+
+    }
 
 }
 
@@ -42,10 +71,5 @@ class Moto extends Vehicule {
 }
 
 class Voiture extends Vehicule {
-
-}
-
-class Vehicule {
-
 
 }
